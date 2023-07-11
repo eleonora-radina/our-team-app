@@ -1,0 +1,104 @@
+.register {
+  margin: 64px auto 0;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .08);
+}
+
+.register__title {
+  font-size: 20px;
+  line-height: 1.15;
+  margin: 0;
+  text-align: start;
+}
+
+.register__form {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.register__form-label {
+  font-size: 16px;
+  line-height: 1.36;
+  position: relative;
+  margin: 16px 0 0;
+  text-align: start;
+}
+
+
+.register__form-input {
+  font-size: 14px;
+  line-height: 1.15;
+  color: #808185;
+  background: #F4F4F4;
+  border-radius: 8px;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  margin: 8px 0 0;
+  box-sizing: border-box; 
+}
+
+.register__form-input:focus {
+  color: #000;
+}
+
+.register__form-input_password {
+  padding-right: 40px;
+}
+
+.register__form-error {
+
+}
+
+.register__form-button {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.36;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+  margin: 24px 0 0;
+  padding: 13px;
+  transition: opacity 0.2s;
+  color: #FFF;
+  background: #512689;
+  cursor: auto;
+}
+
+.register__form-button:hover {
+  opacity: 0.7;
+}
+
+.register__text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.36;
+  margin: 16px 0 10px;
+  text-align: center;
+}
+
+.register__password-toggler {
+  height: 24px;
+  width: 24px;
+  background: transparent url('../../images/eyeOff.svg') no-repeat;
+  border: 0;
+  cursor: pointer;
+  position: absolute;
+  right: 8px;
+  bottom: 12px;
+}
+
+.register__password-toggler_visible {
+  background: transparent url('../../images/eyeOn.svg') no-repeat;
+}
+
+.register__password {
+  margin: 16px 0 0;
+  position: relative;
+}
