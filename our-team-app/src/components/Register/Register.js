@@ -3,22 +3,16 @@ import './register.css'
 
 function Register() {
 
-  const [password, setPasswordValue] = useState("password");
-  const [passwordVis, setPasswordVis] = useState(false);
-  /*const [passwordInput, setPasswordInput] = useState("");
+  const [passwordType, setPasswordType] = useState("password");
+  const [passwordRepeatType, setPasswordRepeatType] = useState("password");
 
-  const onPasswordChange = (e) => {
-    setPasswordInput(e.target.value);
-  };*/
-
-  const toggle = () => {
-    setPasswordVis(!passwordVis);
-    
-    if (password === "password") {
-      setPasswordValue("text");
+  const toggle = (e, state, setState) => {
+    e.preventDefault();
+    if (state === "password") {
+      setState("text");
       return;
     }
-    setPasswordValue("password");
+    setState("password");
   };
 
   return(
@@ -55,12 +49,11 @@ function Register() {
         </label>
 
         <div className='register__password'>
-          
           <label className='register__form-label'>
             Пароль
             <input
               className='register__form-input register__form-input_password'
-              type={password}
+              type={passwordType}
               name='password'
               required
               autoComplete="off"
@@ -69,23 +62,29 @@ function Register() {
             <span className="register__form-error"></span>
           </label>
           <button
-            className={`register__password-toggler ${passwordVis ? 'register__password-toggler_visible' : ''}`}
-            onClick={toggle}
+            className={`register__password-toggler ${passwordType === "text" ? 'register__password-toggler_visible' : ''}`}
+            onClick={e => toggle(e, passwordType, setPasswordType)}
           />
         </div>
 
-        <label className='register__form-label'>
-          Повторите пароль
-          <input
-            className='register__form-input'
-            type='password'
-            name='repeat-password'
-            required
-            autoComplete="off"
-            id='repeat-password-input'
+        <div className='register__password'>
+          <label className='register__form-label'>
+            Повторите пароль
+            <input
+              className='register__form-input register__form-input_password'
+              type={passwordRepeatType}
+              name='repeat-password'
+              required
+              autoComplete="off"
+              id='repeat-password-input'
+            />
+            <span className="register__form-error"></span>
+          </label>
+          <button
+            className={`register__password-toggler ${passwordRepeatType === "text" ? 'register__password-toggler_visible' : ''}`}
+            onClick={e => toggle(e, passwordRepeatType, setPasswordRepeatType)}
           />
-          <span className="register__form-error"></span>
-        </label>
+        </div>
 
         <button
           className={`register__form-button`}
@@ -96,9 +95,9 @@ function Register() {
         </button>
         
       </form>
-      <p className='register__text'>Уже зарегистрированы?
-        {/* <Link to="/signin" className='register__link'>Войти</Link> */}
-      </p>
+      {/* <p className='register__text'>Уже зарегистрированы?
+         <Link to="/signin" className='register__link'>Войти</Link> 
+      </p> */}
     </div>
   );
 }

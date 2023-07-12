@@ -1,0 +1,28 @@
+.userCard {
+ width: 305px;
+ padding: 20px 0;
+ box-shadow: 0 1px 4px 0 rgba(51, 51, 51, .15);
+ border-radius: 10px;
+ list-style: none;
+}
+
+.userCard__description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userCard__image {
+  width: 124px;
+  height: 124px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.userCard__title {
+  font-size: 20px;
+  line-height: 1.15;
+  font-weight: 400;
+  margin: 16px 0;
+}
