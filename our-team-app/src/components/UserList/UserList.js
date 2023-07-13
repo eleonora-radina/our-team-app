@@ -1,24 +1,20 @@
 import './userList.css';
 import UserCard from '../UserCard/UserCard';
 
-function UserList() {
+function UserList(props) {
 
   return(
     <div className="userList">
     <ul className="userList__zone">
-      <UserCard />
-      <UserCard />
-      <UserCard />
-      <UserCard />
-      {/* {props.movies.map((movie => {
-        return <MoviesCard 
-          key = {movie.id}
-          id = {movie.id}
-          movie = {movie}
-          onCardLike = {props.onCardLike}
-          savedMovies={props.savedMovies}
+    {props.users.map((user => {
+        return <UserCard
+          key = {user.id}
+          id = {user.id}
+          firstName = {user.first_name}
+          lastName = {user.last_name}
+          avatar = {user.avatar}
         />
-      }))} */}
+      }))} 
     </ul>
   </div>
   )

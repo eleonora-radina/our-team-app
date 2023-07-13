@@ -2,7 +2,7 @@ import './teamPage.css';
 import Header from '../Header/Header';
 import UserList from '../UserList/UserList';
 
-function TeamPage() {
+function TeamPage(props) {
 
   return (
     <div>
@@ -12,7 +12,7 @@ function TeamPage() {
           <p className='header__text'>Это опытные специалисты, хорошо разбирающиеся во всех задачах, которые ложатся на их плечи, и умеющие находить выход из любых, даже самых сложных ситуаций. </p>
         </div>
       </Header>
-      <UserList />
+      <UserList users={props.users} />
     </div>
   )
 }
