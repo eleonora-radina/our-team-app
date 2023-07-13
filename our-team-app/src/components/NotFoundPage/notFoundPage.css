@@ -1,0 +1,37 @@
+.not-found {
+  text-align: center;
+  margin-top: 64px;
+}
+
+.not-found__title {
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.not-found__title-error {
+  font-size: 100px;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.not-found__text {
+  font-size: 32px;
+  line-height: 1.15;
+  margin: 50px 0 30px;
+}
+
+.not-found__button {
+  border: 1px solid #F8F8F8;
+  border-radius: 8px;
+  background: #512689;
+  font-size: 16px;
+  line-height: 1.36;
+  margin: 0;
+  padding: 8px 16px;
+  color: #F8F8F8;
+  cursor: pointer;
+  align-self: start;
+  text-decoration: none;
+}

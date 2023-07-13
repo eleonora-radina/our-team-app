@@ -10,10 +10,6 @@ function UserList() {
       <UserCard />
       <UserCard />
       <UserCard />
-      <UserCard />
-      <UserCard />
-      <UserCard />
-      <UserCard />
       {/* {props.movies.map((movie => {
         return <MoviesCard 
           key = {movie.id}

@@ -1,9 +1,4 @@
 .App {
-  min-width: 375px;
   margin: 0 auto;
   font-family: 'Roboto', Arial, sans-serif;
-}
-
-.root {
-  min-width: 375px;
 }

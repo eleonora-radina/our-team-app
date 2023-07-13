@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './header.css';
 
 function Header(props) {
@@ -5,13 +6,13 @@ function Header(props) {
   return (
     <header className={`header ${props.hasBackButton ? 'header_user' : 'header_team'}`}>
       
-      {props.hasBackButton && <button className='header__button' type="button">Назад</button>}
-      {props.hasBackButton && <button className='header__mobileReturnButton' type="button" />}
+      {props.hasBackButton && <Link className='header__button' to="/">Назад</Link>}
+      {props.hasBackButton && <Link className='header__mobileReturnButton' to="/" /> }
 
       {props.children}
 
-      <button className='header__button header__button_exit' type="button">Выход</button>
-      <button className='header__mobileExitButton' type="button" />
+      <Link className='header__button header__button_exit' to="/register">Выход</Link>
+      <Link className='header__mobileExitButton' to="/register" />
     </header>
   )
 }

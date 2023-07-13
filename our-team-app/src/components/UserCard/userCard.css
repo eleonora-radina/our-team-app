@@ -4,6 +4,7 @@
  box-shadow: 0 1px 4px 0 rgba(51, 51, 51, .15);
  border-radius: 10px;
  list-style: none;
+ text-decoration: none;
 }
 
 .userCard__description {
@@ -25,4 +26,9 @@
   line-height: 1.15;
   font-weight: 400;
   margin: 16px 0;
+}
+
+.userCard__link {
+  text-decoration: none;
+  color: black;
 }

@@ -1,9 +1,9 @@
 .user__about {
-  margin: 49px 0;
+  margin: 49px auto;
   display: flex;
   gap: 130px;
   padding-left: 188px;
-  align-items: start;
+  /*align-items: start;*/
 }
 
 .user__text {
@@ -70,7 +70,8 @@
 @media (max-width: 650px) {
   .user__about {
     padding: 0;
-    align-items: center;
+    /*align-items: center;*/
+    max-width: 310px;
   }
 
   .user__text {

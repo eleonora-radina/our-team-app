@@ -1,12 +1,12 @@
 .header {
   margin: 0 auto;
+  display: flex;
   padding: 32px 80px;
   background: #512689;
   max-height: 281px;
 }
 
 .header_team {
-  display: flex;
   flex-direction: column-reverse;
 }
 
@@ -30,7 +30,6 @@
   line-height: 1.15;
   margin: 16px auto 32px;
   color: #F8F8F8;
-  text-align: center;
   max-width: 830px;
 }
 
@@ -45,6 +44,7 @@
   color: #F8F8F8;
   cursor: pointer;
   align-self: start;
+  text-decoration: none;
 }
 
 .header__button_exit {
@@ -84,7 +84,7 @@
 }
 
 .header__team-info {
-
+  text-align: center;
 }
 
 @media (max-width: 950px) {
@@ -157,7 +157,7 @@
     font-size: 20px;
   }
 
-  .header__mobileExitButton {
+  .header_user .header__mobileExitButton {
     margin-left: 0;
   }
 

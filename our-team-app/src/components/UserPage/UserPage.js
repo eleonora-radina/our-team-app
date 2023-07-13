@@ -6,6 +6,7 @@ function UserPage() {
 
   return (
     <div>
+      
       <Header hasBackButton>
         <div className='header__user-info'>
           <img className='header__image' src={face} alt='лицо артура' />
