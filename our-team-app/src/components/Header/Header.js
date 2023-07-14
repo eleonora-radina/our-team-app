@@ -4,15 +4,15 @@ import './header.css';
 function Header(props) {
 
   return (
-    <header className={`header ${props.hasBackButton ? 'header_user' : 'header_team'}`}>
-      
+    <header className={`header ${props.hasBackButton ? 'header_page_user' : 'header_page_team'}`}>
+
       {props.hasBackButton && <Link className='header__button' to="/">Назад</Link>}
-      {props.hasBackButton && <Link className='header__mobileReturnButton' to="/" /> }
+      {props.hasBackButton && <Link className='header__mobile-button header__mobile-button_return' to="/" />}
 
       {props.children}
 
-      <Link className='header__button header__button_exit' to="/register">Выход</Link>
-      <Link className='header__mobileExitButton' to="/register" />
+      <Link className='header__button header__button_exit' to="/register" onClick={props.handleExit}>Выход</Link>
+      <Link className='header__mobile-button header__mobile-button_exit' to="/register" onClick={props.handleExit} />
     </header>
   )
 }

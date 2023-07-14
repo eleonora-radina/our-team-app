@@ -1,4 +1,4 @@
-.userCard {
+.user-card {
  width: 305px;
  box-shadow: 0 1px 4px 0 rgba(51, 51, 51, .15);
  border-radius: 10px;
@@ -6,13 +6,13 @@
  text-decoration: none;
 }
 
-.userCard__description {
+.user-card__description {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.userCard__image {
+.user-card__image {
   width: 124px;
   height: 124px;
   border-radius: 50%;
@@ -21,7 +21,7 @@
   padding-top: 20px;
 }
 
-.userCard__title {
+.user-card__title {
   font-size: 20px;
   line-height: 1.15;
   font-weight: 400;
@@ -29,7 +29,7 @@
   padding-bottom: 20px;
 }
 
-.userCard__link {
+.user-card__link {
   text-decoration: none;
   color: black;
 }

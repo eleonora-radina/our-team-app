@@ -6,10 +6,10 @@ function TeamPage(props) {
 
   return (
     <div>
-      <Header>
+      <Header handleExit={props.handleExit}>
         <div className='header__team-info'>
           <h1 className='header__title'>Наша команда</h1>
-          <p className='header__text'>Это опытные специалисты, хорошо разбирающиеся во всех задачах, которые ложатся на их плечи, и умеющие находить выход из любых, даже самых сложных ситуаций. </p>
+          <p className='header__about'>Это опытные специалисты, хорошо разбирающиеся во всех задачах, которые ложатся на их плечи, и умеющие находить выход из любых, даже самых сложных ситуаций. </p>
         </div>
       </Header>
       <UserList users={props.users} />

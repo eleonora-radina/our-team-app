@@ -3,20 +3,18 @@ import UserCard from '../UserCard/UserCard';
 
 function UserList(props) {
 
-  return(
-    <div className="userList">
-    <ul className="userList__zone">
-    {props.users.map((user => {
+  return (
+    <ul className="user-list">
+      {props.users.map((user => {
         return <UserCard
-          key = {user.id}
-          id = {user.id}
-          firstName = {user.first_name}
-          lastName = {user.last_name}
-          avatar = {user.avatar}
+          key={user.id}
+          id={user.id}
+          firstName={user.first_name}
+          lastName={user.last_name}
+          avatar={user.avatar}
         />
-      }))} 
+      }))}
     </ul>
-  </div>
   )
 }
 

@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import './userPage.css';
 import Header from '../Header/Header';
-import face from '../../images/1.jpg';
 
 function UserPage(props) {
 
@@ -16,12 +15,11 @@ function UserPage(props) {
 
   useEffect(() => {
     getUserPage(id);
-  }, [])
-
+  })
 
   return (
     <div>
-      <Header hasBackButton>
+      <Header hasBackButton handleExit={props.handleExit}>
         <div className='header__user-info'>
           <img className='header__image' src={currentUser.avatar} alt={`${currentUser.first_name} ${currentUser.last_name}'s avatar`} />
           <div className='header__name'>
@@ -30,7 +28,6 @@ function UserPage(props) {
           </div>
         </div>
       </Header>
-
 
       <div className='user__about'>
         <p className='user__text'>

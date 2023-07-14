@@ -6,31 +6,15 @@
   max-height: 281px;
 }
 
-.header_team {
+.header_page_team {
   flex-direction: column-reverse;
 }
 
-.header_user {
+.header_page_user {
   display: flex;
   gap: 29px;
   padding-bottom: 39px;
   justify-content: start;
-}
-
-.header__title {
-  font-size: 64px;
-  font-weight: 400;
-  line-height: 1.15;
-  margin: 0;
-  color: #fff;
-}
-
-.header__text {
-  font-size: 20px;
-  line-height: 1.15;
-  margin: 16px auto 32px;
-  color: #F8F8F8;
-  max-width: 830px;
 }
 
 .header__button {
@@ -51,12 +35,16 @@
   margin-left: auto;
 }
 
-.header__mobileExitButton {
+.header__mobile-button {
   display: none;
 }
 
-.header__mobileReturnButton {
-  display: none;
+.header__title {
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 1.15;
+  margin: 0;
+  color: #fff;
 }
 
 .header__subtitle {
@@ -65,6 +53,14 @@
   margin: 16px 0 0;
   color: #FFF;
   text-align: start;
+  max-width: 830px;
+}
+
+.header__about {
+  font-size: 20px;
+  line-height: 1.15;
+  margin: 16px auto 32px;
+  color: #F8F8F8;
   max-width: 830px;
 }
 
@@ -88,21 +84,20 @@
 }
 
 @media (max-width: 950px) {
-  .header__mobileExitButton {
+  .header__mobile-button {
     display: block;
     width: 40px;
     height: 40px;
-    background: transparent url('../../images/exit.svg') center no-repeat;
     border: 0;
+  }
+
+  .header__mobile-button_exit {
+    background: transparent url('../../images/exit.svg') center no-repeat;
     margin-left: auto;
   }
 
-  .header__mobileReturnButton {
-    display: block;
-    width: 40px;
-    height: 40px;
+  .header__mobile-button_return {
     background: transparent url('../../images/back.svg') center no-repeat;
-    border: 0;
   }
 
   .header__button {
@@ -118,7 +113,7 @@
     margin-top: 12px;
   }
   
-  .header__text {
+  .header__about {
     font-size: 16px;
     margin: 16px 0 32px;
   }
@@ -135,7 +130,7 @@
     padding: 12px 16px 64px;
   }
 
-  .header_user {
+  .header_page_user {
     align-items: flex-start;
     max-height: 375px;
     justify-content: space-between;
@@ -157,7 +152,7 @@
     font-size: 20px;
   }
 
-  .header_user .header__mobileExitButton {
+  .header_page_user .header__mobile-button_exit {
     margin-left: 0;
   }
 

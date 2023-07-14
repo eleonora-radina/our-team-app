@@ -3,15 +3,15 @@
   margin-top: 64px;
 }
 
-.not-found__title {
-  font-size: 64px;
-  font-weight: 400;
+.not-found__error {
+  font-size: 100px;
   line-height: 1.15;
   margin: 0;
 }
 
-.not-found__title-error {
-  font-size: 100px;
+.not-found__title {
+  font-size: 64px;
+  font-weight: 400;
   line-height: 1.15;
   margin: 0;
 }

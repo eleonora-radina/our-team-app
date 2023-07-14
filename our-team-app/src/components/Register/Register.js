@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import './register.css'
 
-function Register() {
-
+function Register(props) {
+  const navigate = useNavigate();
   const [passwordType, setPasswordType] = useState("password");
   const [passwordRepeatType, setPasswordRepeatType] = useState("password");
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+
+
   const [password, setPassword] = useState('');
   const [passwordRepeat, setPasswordRepeat] = useState('');
   const [errorName, setErrorName] = useState(null);
@@ -14,6 +17,14 @@ function Register() {
   const [errorPassword, setErrorPassword] = useState(null);
   const [errorPasswordRepeat, setErrorPasswordRepeat] = useState(null);
   const [isValid, setIsValid] = useState(false);
+
+  useEffect(() => {
+    if (props.loggedIn) {
+      navigate("/");
+    } else {
+      navigate("/register");
+    }
+  }, [props.loggedIn])
 
   const toggle = (e, state, setState) => {
     e.preventDefault();
@@ -77,7 +88,10 @@ function Register() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    //props.onRegister({ email, password });
+
+    //mock email for success registration
+    const email = 'george.bluth@reqres.in';
+    props.onRegister({ name, email, password });
   }
 
   return (
