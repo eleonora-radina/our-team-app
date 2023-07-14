@@ -1,14 +1,11 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
 import './register.css'
 
 function Register(props) {
-  const navigate = useNavigate();
   const [passwordType, setPasswordType] = useState("password");
   const [passwordRepeatType, setPasswordRepeatType] = useState("password");
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-
 
   const [password, setPassword] = useState('');
   const [passwordRepeat, setPasswordRepeat] = useState('');
@@ -17,14 +14,6 @@ function Register(props) {
   const [errorPassword, setErrorPassword] = useState(null);
   const [errorPasswordRepeat, setErrorPasswordRepeat] = useState(null);
   const [isValid, setIsValid] = useState(false);
-
-  useEffect(() => {
-    if (props.loggedIn) {
-      navigate("/");
-    } else {
-      navigate("/register");
-    }
-  }, [props.loggedIn])
 
   const toggle = (e, state, setState) => {
     e.preventDefault();
