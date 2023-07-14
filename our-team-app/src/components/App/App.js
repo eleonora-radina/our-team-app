@@ -3,7 +3,6 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import './App.css';
-import '../Register/Register'
 import Register from '../Register/Register';
 import TeamPage from '../TeamPage/TeamPage';
 import UserPage from '../UserPage/UserPage';
@@ -15,6 +14,23 @@ function App() {
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [users, setUsers] = useState([]);
+
+  function getUsers() {
+    api.getUsers()
+      .then((users) => {
+        setUsers(users.data);
+      })
+      .catch((err) => { console.log(err); });
+  }
+
+  const getUserInfo = async (id) => {
+    let user = [];
+    try {
+      user = await api.getUser(id);
+    } catch (err) {
+      console.log(err);
+    } finally { return user; }
+  }
 
   function handleRegister(data) {
     api.register(data)
@@ -28,44 +44,25 @@ function App() {
 
   function handleExit() {
     localStorage.removeItem('token');
-    setLoggedIn(false);
     navigate("/register");
   }
-
+  
   useEffect(() => {
-    if (localStorage.getItem('token')) {
-      setLoggedIn(true);
-    } else {
-      setLoggedIn(false);
+    let isAuth = localStorage.getItem('token') ? true : false;
+    setLoggedIn(isAuth);
+    if (loggedIn === true) {
+      getUsers()
     }
-  }, []);
-
-  useEffect(() => {
-    api.getUsers()
-      .then((users) => {
-        setUsers(users.data);
-      })
-      .catch((err) => { console.log(err); });
-  }, []);
-
-  const getUserInfo = async (id) => {
-    let user = [];
-    try {
-      user = await api.getUser(id);
-    } catch (err) {
-      console.log(err);
-    } finally { return user; }
-  }
+  }, [loggedIn]);
 
   return (
     <div className="App">
       <Routes>
-        <Route path="/register" element={<Register onRegister={handleRegister} loggedIn={loggedIn} />} />
+        <Route path="/register" element={<Register onRegister={handleRegister} />} />
         <Route
-          loggedIn={loggedIn}
           path="/"
           element={
-            <ProtectedRoute loggedIn={loggedIn} >
+            <ProtectedRoute>
               <TeamPage
                 users={users}
                 handleExit={handleExit}
@@ -74,12 +71,10 @@ function App() {
         />
 
         <Route
-          loggedIn={loggedIn}
           path="/user/:id"
           element={
-            <ProtectedRoute loggedIn={loggedIn} >
+            <ProtectedRoute>
               <UserPage
-                users={users}
                 getUser={getUserInfo}
                 handleExit={handleExit}
               />

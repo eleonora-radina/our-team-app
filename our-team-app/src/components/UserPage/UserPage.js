@@ -15,15 +15,15 @@ function UserPage(props) {
 
   useEffect(() => {
     getUserPage(id);
-  })
+  }, [])
 
   return (
     <div>
       <Header hasBackButton handleExit={props.handleExit}>
         <div className='header__user-info'>
-          <img className='header__image' src={currentUser.avatar} alt={`${currentUser.first_name} ${currentUser.last_name}'s avatar`} />
+          <img className='header__image' src={currentUser?.avatar} alt={`${currentUser?.first_name} ${currentUser?.last_name}'s avatar`} />
           <div className='header__name'>
-            <h1 className='header__title'>{`${currentUser.first_name} ${currentUser.last_name}`}</h1>
+            <h1 className='header__title'>{`${currentUser?.first_name} ${currentUser?.last_name}`}</h1>
             <p className='header__subtitle'>Партнер</p>
           </div>
         </div>
@@ -40,7 +40,7 @@ function UserPage(props) {
 
         <ul className='user__data'>
           <li className='user__text user__text_phone'>+7 (954) 333-44-55</li>
-          <li className='user__text user__text_mail'>{currentUser.email}</li>
+          <li className='user__text user__text_mail'>{currentUser?.email}</li>
         </ul>
       </div>
     </div>
