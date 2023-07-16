@@ -1,11 +1,13 @@
+import { useSelector } from 'react-redux';
 import './userList.css';
 import UserCard from '../UserCard/UserCard';
 
-function UserList(props) {
+function UserList() {
+  const users = useSelector(state => state.users);
 
   return (
     <ul className="user-list">
-      {props.users.map((user => {
+      {users.users.map((user => {
         return <UserCard
           key={user.id}
           id={user.id}

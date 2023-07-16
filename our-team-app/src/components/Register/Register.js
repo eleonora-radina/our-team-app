@@ -5,7 +5,7 @@ function Register(props) {
   const [passwordType, setPasswordType] = useState("password");
   const [passwordRepeatType, setPasswordRepeatType] = useState("password");
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [emailEntered, setEmailEntered] = useState('');
 
   const [password, setPassword] = useState('');
   const [passwordRepeat, setPasswordRepeat] = useState('');
@@ -14,6 +14,7 @@ function Register(props) {
   const [errorPassword, setErrorPassword] = useState(null);
   const [errorPasswordRepeat, setErrorPasswordRepeat] = useState(null);
   const [isValid, setIsValid] = useState(false);
+
 
   const toggle = (e, state, setState) => {
     e.preventDefault();
@@ -36,7 +37,7 @@ function Register(props) {
   }
 
   function handleEmailChange(e) {
-    setEmail(e.target.value);
+    setEmailEntered(e.target.value);
     if (e.target.validity) {
       e.target.validity.patternMismatch
         ? setErrorEmail(`Введите данные в указанном формате: info@ya.ru`)

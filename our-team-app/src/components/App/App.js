@@ -9,22 +9,27 @@ import UserPage from '../UserPage/UserPage';
 import PageNotFound from '../NotFoundPage/NotFoundPage';
 import api from '../../utils/api';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { addUsers } from '../../store/users/users.slice'
+import { logInUser, logOutUser, checkLogIn } from '../../store/user/user.slice'
+
 function App() {
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [users, setUsers] = useState([]);
-
+  const user = useSelector(state => state.user);
+  console.log(user);
+  
   function getUsers() {
     api.getUsers()
       .then((users) => {
-        setUsers(users.data);
+        dispatch(addUsers(users.data));
       })
       .catch((err) => { console.log(err); });
   }
 
   const getUserInfo = async (id) => {
-    let user = [];
+    let user = {};
     try {
       user = await api.getUser(id);
     } catch (err) {
@@ -32,28 +37,26 @@ function App() {
     } finally { return user; }
   }
 
-  function handleRegister(data) {
-    api.register(data)
+  function handleRegister(item) {
+    api.register(item)
       .then((data) => {
-        setLoggedIn(true);
-        localStorage.setItem('token', data.token);
+        dispatch(logInUser({id: data.id, name: item.name, email: item.email, token: data.token}));
         navigate("/");
       })
       .catch((error) => { console.log(error); })
   }
 
   function handleExit() {
-    localStorage.removeItem('token');
+    dispatch(logOutUser());
     navigate("/register");
   }
-  
+
   useEffect(() => {
-    let isAuth = localStorage.getItem('token') ? true : false;
-    setLoggedIn(isAuth);
-    if (loggedIn === true) {
+    dispatch(checkLogIn());
+    if (user.isLoggedIn === true) {
       getUsers()
     }
-  }, [loggedIn]);
+  });
 
   return (
     <div className="App">
@@ -64,7 +67,6 @@ function App() {
           element={
             <ProtectedRoute>
               <TeamPage
-                users={users}
                 handleExit={handleExit}
               />
             </ProtectedRoute>}
@@ -73,7 +75,7 @@ function App() {
         <Route
           path="/user/:id"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute >
               <UserPage
                 getUser={getUserInfo}
                 handleExit={handleExit}
