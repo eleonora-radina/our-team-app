@@ -10,7 +10,7 @@ import PageNotFound from '../NotFoundPage/NotFoundPage';
 import api from '../../utils/api';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { addUsers } from '../../store/users/users.slice'
+import { addUsers, addMoreUsers } from '../../store/users/users.slice'
 import { logInUser, logOutUser, checkLogIn } from '../../store/user/user.slice'
 
 function App() {
@@ -18,12 +18,15 @@ function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector(state => state.user);
-  console.log(user);
   
+  const [counter, setCounter] = useState(1);
+  const [isButtonVisible, setIsButtonVisible] = useState(true);
+
   function getUsers() {
-    api.getUsers()
+    api.getUsers(counter)
       .then((users) => {
         dispatch(addUsers(users.data));
+        setCounter(counter + 1)
       })
       .catch((err) => { console.log(err); });
   }
@@ -40,7 +43,7 @@ function App() {
   function handleRegister(item) {
     api.register(item)
       .then((data) => {
-        dispatch(logInUser({id: data.id, name: item.name, email: item.email, token: data.token}));
+        dispatch(logInUser({ id: data.id, name: item.name, email: item.email, token: data.token }));
         navigate("/");
       })
       .catch((error) => { console.log(error); })
@@ -51,12 +54,26 @@ function App() {
     navigate("/register");
   }
 
+  function getMoreUsers() {
+    api.getUsers(counter)
+      .then((users) => {
+        dispatch(addMoreUsers(users.data));
+
+        if (users.total_pages > counter) {
+          setCounter(counter + 1)
+        } else if (users.total_pages === counter) {
+          setIsButtonVisible(false);
+        }
+      })
+      .catch((err) => { console.log(err); });
+  }
+
   useEffect(() => {
     dispatch(checkLogIn());
     if (user.isLoggedIn === true) {
-      getUsers()
+      getUsers(counter)
     }
-  });
+  }, [user.isLoggedIn]);
 
   return (
     <div className="App">
@@ -68,6 +85,8 @@ function App() {
             <ProtectedRoute>
               <TeamPage
                 handleExit={handleExit}
+                getMoreUsers={getMoreUsers}
+                isButtonVisible={isButtonVisible}
               />
             </ProtectedRoute>}
         />

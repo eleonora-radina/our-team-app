@@ -1,0 +1,17 @@
+.team-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.team-page__button {
+  width: 170px;
+  border: 1px solid #000;
+  border-radius: 8px;
+  background: transparent url('../../images/more.svg') right 16px top 14px no-repeat;
+  font-size: 16px;
+  line-height: 1.36;
+  margin: 8px auto 69px;
+  padding: 9px 16px;
+  cursor: pointer;
+  text-align: left;
+}

@@ -20,8 +20,8 @@ class Api {
       .then((res) => this._getResponseData(res));
   }
 
-  getUsers() {
-    return fetch(`${this._url}/users`, {
+  getUsers(counter) {
+    return fetch(`${this._url}/users?page=${counter}&per_page=4`, {
       headers: this._headers,
     })
       .then((res) => this._getResponseData(res));
