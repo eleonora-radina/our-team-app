@@ -14,7 +14,7 @@ function UserCard(props) {
 
   useEffect(() => {
     setIsLiked(favRedux?.includes(props.id));
-  }, [favRedux])
+  }, [favRedux, props.id])
 
 
   function handleCardLike(e) {

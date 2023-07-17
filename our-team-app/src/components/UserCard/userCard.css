@@ -46,5 +46,5 @@
 }
 
 .user-card__like_active {
-  background: transparent url('../../images/likeActive.svg') center no-repeat;
+  background: #F8F8F8 url('../../images/likeActive.svg') center no-repeat;
 }

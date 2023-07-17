@@ -3,7 +3,6 @@
   display: flex;
   gap: 130px;
   padding-left: 188px;
-  /*align-items: start;*/
 }
 
 .user__text {
@@ -40,6 +39,10 @@
   margin-right: 8px;
 }
 
+.user-page__loader {
+  margin: 50vh auto 0;
+}
+
 @media (max-width: 1200px) {
   .user__about {
     flex-direction: column-reverse;
@@ -70,7 +73,6 @@
 @media (max-width: 650px) {
   .user__about {
     padding: 0;
-    /*align-items: center;*/
     max-width: 310px;
   }
 

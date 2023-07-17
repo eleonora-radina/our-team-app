@@ -172,9 +172,6 @@ function Register(props) {
         </button>
 
       </form>
-      {/* <p className='register__text'>Уже зарегистрированы?
-         <Link to="/signin" className='register__link'>Войти</Link> 
-      </p> */}
     </div>
   );
 }

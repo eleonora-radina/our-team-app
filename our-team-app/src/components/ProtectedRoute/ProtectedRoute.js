@@ -1,9 +1,11 @@
 import { Navigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 const ProtectedRoute = (props) => {
+  const user = useSelector(state => state.user);
 
   return (
-    localStorage.getItem('token') ? props.children : <Navigate to="/register" />
+    user.isLoggedIn === true ? props.children : <Navigate to="/register" />
   );
 };
 

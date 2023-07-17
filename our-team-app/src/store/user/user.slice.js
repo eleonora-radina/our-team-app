@@ -4,7 +4,7 @@ const initialState = {
   id: null,
   name: "",
   email: "",
-  isLoggedIn: null
+  isLoggedIn: localStorage.getItem('token') ? true : false
 };
 
 export const userSlice = createSlice({
@@ -28,14 +28,8 @@ export const userSlice = createSlice({
       state.email = initialState.email;
       localStorage.removeItem('token');
     },
-
-    checkLogIn: (state) => {
-      if (localStorage.getItem('token')) {
-        state.isLoggedIn = true;
-      }
-    }
   }
 })
 
-export const { logInUser, logOutUser, checkLogIn } = userSlice.actions;
+export const { logInUser, logOutUser } = userSlice.actions;
 export default userSlice.reducer;

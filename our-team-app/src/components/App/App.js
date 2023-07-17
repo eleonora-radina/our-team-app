@@ -1,17 +1,20 @@
-import { useEffect, useState } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import './App.css';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
-import './App.css';
+import { useEffect, useState } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { addUsers, clearUsers } from '../../store/users/users.slice'
+import { logInUser, logOutUser } from '../../store/user/user.slice'
+import { clearFavourites } from '../../store/favourites/favourites.slice'
+
 import Register from '../Register/Register';
 import TeamPage from '../TeamPage/TeamPage';
 import UserPage from '../UserPage/UserPage';
 import PageNotFound from '../NotFoundPage/NotFoundPage';
 import api from '../../utils/api';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { addUsers, addMoreUsers } from '../../store/users/users.slice'
-import { logInUser, logOutUser, checkLogIn } from '../../store/user/user.slice'
 
 function App() {
 
@@ -22,11 +25,20 @@ function App() {
   const [counter, setCounter] = useState(1);
   const [isButtonVisible, setIsButtonVisible] = useState(true);
 
-  function getUsers() {
+  useEffect(() => {
+      getUsers(counter);
+  }, [user]);
+
+   function getUsers() {
     api.getUsers(counter)
       .then((users) => {
         dispatch(addUsers(users.data));
-        setCounter(counter + 1)
+
+        if (users.total_pages > counter) {
+          setCounter(counter + 1)
+        } else if (users.total_pages === counter) {
+          setIsButtonVisible(false);
+        }
       })
       .catch((err) => { console.log(err); });
   }
@@ -51,29 +63,12 @@ function App() {
 
   function handleExit() {
     dispatch(logOutUser());
+    dispatch(clearFavourites());
+    dispatch(clearUsers());
+    setCounter(1);
+    setIsButtonVisible(true)
     navigate("/register");
   }
-
-  function getMoreUsers() {
-    api.getUsers(counter)
-      .then((users) => {
-        dispatch(addMoreUsers(users.data));
-
-        if (users.total_pages > counter) {
-          setCounter(counter + 1)
-        } else if (users.total_pages === counter) {
-          setIsButtonVisible(false);
-        }
-      })
-      .catch((err) => { console.log(err); });
-  }
-
-  useEffect(() => {
-    dispatch(checkLogIn());
-    if (user.isLoggedIn === true) {
-      getUsers(counter)
-    }
-  }, [user.isLoggedIn]);
 
   return (
     <div className="App">
@@ -85,7 +80,7 @@ function App() {
             <ProtectedRoute>
               <TeamPage
                 handleExit={handleExit}
-                getMoreUsers={getMoreUsers}
+                getUsers={getUsers}
                 isButtonVisible={isButtonVisible}
               />
             </ProtectedRoute>}
