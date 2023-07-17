@@ -6,7 +6,7 @@ function TeamPage(props) {
 
   function handleMore(e) {
     e.preventDefault();
-    props.getUsers();
+    props.getMoreUsers();
   } 
 
   return (

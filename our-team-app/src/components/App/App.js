@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { addUsers, clearUsers } from '../../store/users/users.slice'
+import { addUsers, addMoreUsers, clearUsers } from '../../store/users/users.slice'
 import { logInUser, logOutUser } from '../../store/user/user.slice'
 import { clearFavourites } from '../../store/favourites/favourites.slice'
 
@@ -26,14 +26,24 @@ function App() {
   const [isButtonVisible, setIsButtonVisible] = useState(true);
 
   useEffect(() => {
-      getUsers(counter);
+    if (user.isLoggedIn === true) {
+      getUsers();
+      setCounter(2)
+    }
   }, [user]);
 
-   function getUsers() {
-    api.getUsers(counter)
+  function getUsers() {
+    api.getUsers(1)
       .then((users) => {
         dispatch(addUsers(users.data));
+      })
+      .catch((err) => { console.log(err); });
+  }
 
+  function getMoreUsers() {
+    api.getUsers(counter)
+      .then((users) => {
+        dispatch(addMoreUsers(users.data));
         if (users.total_pages > counter) {
           setCounter(counter + 1)
         } else if (users.total_pages === counter) {
@@ -62,11 +72,11 @@ function App() {
   }
 
   function handleExit() {
+    setCounter(1);
+    setIsButtonVisible(true);
     dispatch(logOutUser());
     dispatch(clearFavourites());
     dispatch(clearUsers());
-    setCounter(1);
-    setIsButtonVisible(true)
     navigate("/register");
   }
 
@@ -80,7 +90,7 @@ function App() {
             <ProtectedRoute>
               <TeamPage
                 handleExit={handleExit}
-                getUsers={getUsers}
+                getMoreUsers={getMoreUsers}
                 isButtonVisible={isButtonVisible}
               />
             </ProtectedRoute>}
