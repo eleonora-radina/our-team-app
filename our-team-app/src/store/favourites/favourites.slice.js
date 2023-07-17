@@ -1,24 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = [];
+const initialState = JSON.parse(localStorage.getItem('favourites')) ?? [];
 
 export const favouritesSlice = createSlice({
   name: 'favourites',
   initialState,
   reducers: {
     toggleFavourites: (state, { payload }) => {
-      const user = payload;
-      const isExist = state.some(u => u.id === user.id);
+      const userId = payload;
+      const isExist = state.some(id => id === userId);
 
-      //чего?
       if (isExist) {
-        const index = state.findIndex(u => u.id !== user.id)
+        const index = state.findIndex(id => id === userId)
         if (index !== -1) {
           state.splice(index, 1);
         }
       } else { 
-        state.push(user); 
+        state.push(userId); 
       }
+
+      localStorage.setItem('favourites', JSON.stringify(state));
     }
   }
 })

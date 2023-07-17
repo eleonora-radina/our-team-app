@@ -18,7 +18,7 @@ function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector(state => state.user);
-  
+
   const [counter, setCounter] = useState(1);
   const [isButtonVisible, setIsButtonVisible] = useState(true);
 

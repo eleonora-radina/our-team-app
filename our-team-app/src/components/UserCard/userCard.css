@@ -10,6 +10,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 36px;
 }
 
 .user-card__image {
@@ -18,7 +19,6 @@
   border-radius: 50%;
   object-fit: cover;
   object-position: center;
-  padding-top: 20px;
 }
 
 .user-card__title {
@@ -26,10 +26,25 @@
   line-height: 1.15;
   font-weight: 400;
   margin: 16px 0;
-  padding-bottom: 20px;
 }
 
 .user-card__link {
   text-decoration: none;
   color: black;
+  cursor: pointer;
+}
+
+.user-card__like {
+  width: 30px;
+  height: 28px;
+  padding: 0;
+  background: #F8F8F8 url('../../images/like.svg') center no-repeat;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0 auto 20px 84%;
+}
+
+.user-card__like_active {
+  background: transparent url('../../images/likeActive.svg') center no-repeat;
 }
