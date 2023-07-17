@@ -85,7 +85,7 @@ function App() {
       <Routes>
         <Route path="/register" element={<Register onRegister={handleRegister} />} />
         <Route
-          path="/"
+          exact path="/"
           element={
             <ProtectedRoute>
               <TeamPage
