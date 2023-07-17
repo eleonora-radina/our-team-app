@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/eleonora-radina/our-team-app/static/css/main.d3355471.css",
+    "main.js": "/eleonora-radina/our-team-app/static/js/main.a47e2bfc.js",
+    "static/js/787.21eb2bfb.chunk.js": "/eleonora-radina/our-team-app/static/js/787.21eb2bfb.chunk.js",
+    "static/media/Roboto.woff": "/eleonora-radina/our-team-app/static/media/Roboto.59d18e163bfcd0607572.woff",
+    "static/media/Roboto.woff2": "/eleonora-radina/our-team-app/static/media/Roboto.806e04d8241d87f99a68.woff2",
+    "static/media/exit.svg": "/eleonora-radina/our-team-app/static/media/exit.029da92b45a01830dacb.svg",
+    "static/media/more.svg": "/eleonora-radina/our-team-app/static/media/more.050c724a5e29dff2932a.svg",
+    "static/media/phone.svg": "/eleonora-radina/our-team-app/static/media/phone.49ab2f07dcf42699a447.svg",
+    "static/media/eyeOff.svg": "/eleonora-radina/our-team-app/static/media/eyeOff.ea8d0ad12b2b36bfb8bf.svg",
+    "index.html": "/eleonora-radina/our-team-app/index.html",
+    "static/media/back.svg": "/eleonora-radina/our-team-app/static/media/back.9c92895c6130f26bff09.svg",
+    "static/media/eyeOn.svg": "/eleonora-radina/our-team-app/static/media/eyeOn.04d998c53e92b2cabb74.svg",
+    "static/media/mail.svg": "/eleonora-radina/our-team-app/static/media/mail.404b6dc69a7a7d62e728.svg",
+    "static/media/likeActive.svg": "/eleonora-radina/our-team-app/static/media/likeActive.11b44be12685415406f5.svg",
+    "static/media/like.svg": "/eleonora-radina/our-team-app/static/media/like.061e171d2a52e699ffb3.svg",
+    "main.d3355471.css.map": "/eleonora-radina/our-team-app/static/css/main.d3355471.css.map",
+    "main.a47e2bfc.js.map": "/eleonora-radina/our-team-app/static/js/main.a47e2bfc.js.map",
+    "787.21eb2bfb.chunk.js.map": "/eleonora-radina/our-team-app/static/js/787.21eb2bfb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d3355471.css",
+    "static/js/main.a47e2bfc.js"
+  ]
+}
